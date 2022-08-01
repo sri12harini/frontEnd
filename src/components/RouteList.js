@@ -1,6 +1,9 @@
 import React ,{useState,useEffect}from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import {Link, Route} from 'react-router-dom'
+import { Table } from'react-bootstrap'
+import { Card } from 'react-bootstrap'
+import { ListGroup } from 'react-bootstrap'
 
 import {
     retrieveRoute,
@@ -41,7 +44,10 @@ export default function RouteList(props){
 
 
 return(
-<table>
+    <Card style={{ backgroundColor: "lightGrey" ,width: '30rem' }}>
+      <ListGroup variant="flush">
+<Table striped bordered hover variant="" bgcolor='white' width={30}>
+
     <thead>
         <tr>
             <th>routeId</th>
@@ -74,9 +80,11 @@ return(
             <td colSpan={6}>No routes</td>
         </tr>
      )}
-
+     
     </tbody>
-</table>
+    </Table>
+    </ListGroup>
+    </Card>
 
 
 

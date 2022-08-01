@@ -1,6 +1,12 @@
 import React,{useState} from 'react'
 import { useDispatch } from 'react-redux';
 import { addRoute } from '../actions/route';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
+import AddRoute from '../CSS/AddRoute.css';
+
 
 
 export default function AddRouteForm(props){
@@ -61,45 +67,55 @@ dispatch(addRoute(route));
 setRoute(initialFormState);
 
 }
-return (<>
+return (
+   <Card style={{ backgroundColor: "lightGrey" ,width: '30rem' }}>
+      <ListGroup variant="flush">
+   <Form onSubmit={submitHandler} >
+     <Form.Group className="mb-3" controlId="formBasicRouteId">
+       <Form.Label>RouteId</Form.Label>
+       <Form.Control type="number" placeholder="RouteId"
+        name='routeId'
+        value={route.routeId}
+       onChange={handleInputChange} />
+       
+     </Form.Group>
 
-   <form onSubmit={submitHandler}>
+     <Form.Group className="mb-3" controlId="formBasicrouteFrom" >
+       <Form.Label>routeFrom</Form.Label>
+         <Form.Select aria-label="Default select example" name='routeFrom' onChange={handleInputChange} placeholder="Choose the Starting point" >
+         <option >Open this select menu</option>
+         <option value="Karimnagar">Karimnagar</option>
+         <option value="Chennai">Chennai</option>
+         <option value="Hyderbad">Hyderbad</option>
+         </Form.Select>
+         </Form.Group>
 
-<label>Id</label>
-<input 
-type='number'
-name='id'
-value={route.id}
-onChange={handleInputChange}/>
-
-<label>routeFrom</label>
-<input 
-type='text'
-name='routeFrom'
-value={route.routeFrom}
-onChange={handleInputChange}/>
-
-<label>routeTo</label>
-<input 
-type='text'
-name='routeTo'
-value={route.routeTo}
-onChange={handleInputChange}/>
-
-<label>distance</label>
-<input 
-type='number'
-name='distance'
-value={route.distance}
-onChange={handleInputChange}/>
-
-<button>Add New Route</button>
-
-</form>
+         <Form.Group className="mb-3" controlId="formBasicrouteTo" >
+       <Form.Label>routeTo</Form.Label>       
+         <Form.Select aria-label="Default select example" name='routeTo' onChange={handleInputChange} placeholder="Choose the Ending point" >
+         <option >Open this select menu</option>
+         <option value="Mumbai">Mumbai</option>
+         <option value="Goa">Goa</option>
+         <option value="Pune">Pune</option>
+         </Form.Select>
+         </Form.Group>
 
 
-</>
-)
+     <Form.Group className="mb-3" controlId="formBasicDistance">
+       <Form.Label>distance</Form.Label>
+       <Form.Control type="number" placeholder="distance" required
+        name='distance'
+        value={route.distance}
+       onChange={handleInputChange} />
+     </Form.Group>
 
+     
+     <Button variant="primary" type="submit">
+       submit
+     </Button>
+   </Form>
+   </ListGroup>
+   </Card>
+ );
 
 }

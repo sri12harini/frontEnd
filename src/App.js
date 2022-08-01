@@ -7,6 +7,8 @@ import apiClient from './http-common'
 import {BrowserRouter, Routes ,Route ,  Link ,useNavigate } from 'react-router-dom'
 import AddRouteForm from './components/AddRouteForm';
 import EditRouteForm from './components/EditRouteForm';
+
+
 function App() {
   
 const [routeData,setRoute]=useState([]);
@@ -74,13 +76,12 @@ async function deleteRoute(routeId){
   }
   
   
-  
-  
   return (<div>
     <div className='container'>
-    <h1>Route Crud app with hooks</h1>
+    <h1>Search for bus routes!!</h1>
     <div className='flex-row'>
       <div className='flex-large'>
+        
         {editing ? (
         <div>
           <h2>Edit Route Form </h2>
@@ -92,6 +93,7 @@ async function deleteRoute(routeId){
            </div>):(
 
     <BrowserRouter>
+    
     <nav className="navbar navbar-expand navbar-dark bg-dark">
         <a href="/route" className="navbar-brand">
           React App
@@ -123,10 +125,10 @@ async function deleteRoute(routeId){
          deleteRoute={deleteRoute} />}>
 
          </Route>
-         <Route path="/route/:id" element={<EditRouteForm /> }></Route>
+         <Route path="/route/:routeId" element={<EditRouteForm /> }></Route>
         </Routes>
       </div>
-    
+      
     </BrowserRouter>
     )}</div></div></div></div>
 )}
